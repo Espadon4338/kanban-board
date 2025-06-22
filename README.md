@@ -1,70 +1,54 @@
-# Тестовое задание Kanban board
+# React + TypeScript + Vite
 
-## Содержание
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-- [Техническое задание](#Техническое-задание)
-- [Используемые технологии](#Используемые-технологии)
-- [Тестирование](#Тестирование)
-- [Полезные ссылки](#Полезные-ссылки)
+Currently, two official plugins are available:
 
-## Техническое задание
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-Необходимо разработать одностраничное веб-приложение, которое представляет собой упрощённый аналог Kanban доски.
+## Expanding the ESLint configuration
 
-### Необходимый функционал:
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-- Добавление и удаление колонок на доске.
-- Доска должна содержать минимум три колонки - "To Do", "In Progress", "Done".
-- Пользователь может добавлять новые колонки.
-- Добавление, редактирование и удаление карточек задач внутри колонок.
-- Добавление описания заголовка карточки, описания карточки и функционала приоритета задачи (Low, Medium, High), приоритет задачи может быть необязательным полем для заполнения.
-- Перемещение карточек между колонками при помощи Drag and drop.
-- Хранение данных о колонках и карточках в localStorage.
-- Подсчет количества карточек в колонке.
-- Для названий колонок продумайте цветовую схему так, чтобы они были визуально различимы друг от друга.
-- Для сборки проекта можно использовать Create React App (CRA), но приветствуется использование любого сборщика (Webpack, Vite, Parcel).
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
 
-При необходимости, можно предусмотреть возможность изменения цвета названия колонки пользователем.
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-### Пример графического представления:
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-Ссылка на макет: [Kanban board](https://www.figma.com/design/17N8cjZbDpIwWHoBzQDrOP/Kanban-board?node-id=0-1&p=f&t=08vz0ke7M8naKdvC-0)
-
-### Также проект предполагает:
-
-- Использование TypeScript для строгой типизации проекта.
-- Организацию файловой структуры описанной в [structure](https://github.com/mkrivel/structure).
-- Также реализация общей темы для стилей в проекте - [ссылка на пример](https://habr.com/ru/articles/591381/);
-- Реализацию обработки ошибок через паттерн _"Error Boundaries"_;
-- Реализацию адаптивной верстки до 390px;
-- Оптимизация приложения;
-- Деплой приложения на платформу GitHub Pages или иные другие (Netlify, Vercel, ...);
-- Настройку конфигурации **_babel_**, **_eslint_**, **_prettier_**, **_husky_**;
-- Использование алиасов для импортирования файлов;
-- Придерживаться требований по написанию и организации кода react приложения. Ссылка на требования: [Требования к тестовому заданию](https://github.com/annaprystavka/requirements).
-
-## Используемые технологии:
-
-- **_node.js_** - программная платформа, основанная на движке V8 (транслирующем JavaScript в машинный код);
-- **_typescript_** - инструмент строгой типизации;
-- **_prettier_** - инструмент для форматирования кода;
-- **_eslint_** - линтер для JavaScript кода;
-- **_husky_** - современное решение для управления Git хуками;
-- **_babel_** - транспайлер, преобразующий код из одного стандарта в другой;
-- **_react_** - JavaScript-библиотека для создания пользовательских интерфейсов;
-- **_react-router-dom_** - набор навигационных компонентов;
-- **_redux_** - инструмент управления состоянием приложения;
-- **_styled-components_** - система стилизации react компонентов;
-
-## Полезные ссылки:
-
-[React](https://reactjs.org/docs/getting-started.html)
-[Typescript](https://www.typescriptlang.org/)
-[React router dom](https://reacttraining.com/react-router/web/guides/quick-start)
-[React redux](https://react-redux.js.org/introduction/quick-start)
-[Styled-components](https://styled-components.com/docs)
-[Prettier](https://prettier.io/)
-[Eslint](https://eslint.org/)
-[Husky](https://typicode.github.io/husky/)
-[Commitlint](https://github.com/conventional-changelog/commitlint)
-[GitFlow](https://www.atlassian.com/ru/git/tutorials/comparing-workflows/gitflow-workflow)
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
+```
