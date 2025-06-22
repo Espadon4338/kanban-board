@@ -10,6 +10,8 @@ export default defineConfig({
       "@": resolve(__dirname, "./src"),
       "@components": resolve(__dirname, "./src/components"),
       "@assets": resolve(__dirname, "./src/assets"),
+      "@/types": resolve(__dirname, "./src/types"),
+      "@/utils": resolve(__dirname, "./src/utils"),
     },
   },
 })

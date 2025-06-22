@@ -5,7 +5,9 @@
     "paths": {
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
-      "@assets/*": ["src/assets/*"]
+      "@assets/*": ["src/assets/*"],
+      "@/types": ["src/types"],
+      "@/utils": ["src/utils"]
     },
     "target": "ES2020",
     "useDefineForClassFields": true,
