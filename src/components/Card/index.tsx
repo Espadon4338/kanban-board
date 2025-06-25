@@ -1,5 +1,6 @@
 import React from "react"
-import { useDraggable } from "@dnd-kit/core"
+import { useSortable } from "@dnd-kit/sortable"
+import { CSS } from "@dnd-kit/utilities"
 import {
   CardContainer,
   CardHeader,
@@ -19,20 +20,26 @@ interface CardProps {
 }
 
 export const Card: React.FC<CardProps> = ({ card, onEdit, onDelete, color }) => {
-  const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: card.id,
     data: { type: "card", card },
   })
 
-  const style = transform
-    ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-      }
-    : undefined
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  }
 
   return (
-    <CardContainer ref={setNodeRef} style={style} color={color} $isDragging={isDragging}>
-      <CardHeader {...listeners} {...attributes}>
+    <CardContainer
+      ref={setNodeRef}
+      style={style}
+      color={color}
+      $isDragging={isDragging}
+      {...attributes}
+      {...listeners}
+    >
+      <CardHeader>
         <CardTitle>{card.title}</CardTitle>
         {card.priority && <PriorityBadge priority={card.priority}>{card.priority}</PriorityBadge>}
       </CardHeader>
@@ -41,8 +48,8 @@ export const Card: React.FC<CardProps> = ({ card, onEdit, onDelete, color }) => 
 
       <CardActions>
         <ActionButton
-          onClick={() => {
-            console.log("Edit button clicked for card:", card.id)
+          onClick={(e) => {
+            e.stopPropagation()
             onEdit(card)
           }}
           title="Edit"
@@ -50,8 +57,8 @@ export const Card: React.FC<CardProps> = ({ card, onEdit, onDelete, color }) => 
           ✏️
         </ActionButton>
         <ActionButton
-          onClick={() => {
-            console.log("Delete button clicked for card:", card.id)
+          onClick={(e) => {
+            e.stopPropagation()
             onDelete(card.id)
           }}
           title="Delete"

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const CardContainer = styled.div<{ $isDragging?: boolean }>`
+export const CardContainer = styled.div<{ $isDragging?: boolean; color: string }>`
   background-color: var(--white);
   border-radius: 8px;
   box-shadow: var(--shadow-sm);
@@ -13,7 +13,6 @@ export const CardContainer = styled.div<{ $isDragging?: boolean }>`
   &:hover {
     box-shadow: var(--shadow-md);
     transform: translateY(-2px);
-    border-left-color: ${(props) => props.color || "var(--border)"};
   }
 `
 
