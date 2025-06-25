@@ -1,3 +1,5 @@
+# Application deployed on Render: [Direct link](https://kanban-board-y8eu.onrender.com/)
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
