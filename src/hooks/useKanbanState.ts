@@ -1,7 +1,9 @@
 import { useState } from "react"
-import { useLocalStorage } from "./useLocalStorage"
-import { Column, Card, initialColumns } from "@/types"
+
+import { Card, Column, initialColumns } from "@/types"
 import { generateId, getColumnColor } from "@/utils"
+
+import { useLocalStorage } from "./useLocalStorage"
 
 export const useKanbanState = () => {
   const [columns, setColumns] = useLocalStorage<Column[]>("kanban-board", initialColumns)

@@ -1,18 +1,20 @@
-import React from "react"
 import { useDroppable } from "@dnd-kit/core"
+import React from "react"
+
 import { Card } from "@/components/Card"
+import { ActionButton } from "@/components/Card/styled"
+import { Card as CardType, Column as ColumnType } from "@/types"
+
 import {
+  AddCardButton,
+  CardCount,
+  CardsList,
+  ColumnActions,
+  ColumnColorIndicator,
   ColumnContainer,
   ColumnHeader,
   ColumnTitle,
-  ColumnColorIndicator,
-  CardCount,
-  ColumnActions,
-  CardsList,
-  AddCardButton,
 } from "./styled"
-import { ActionButton } from "@/components/Card/styled"
-import { Column as ColumnType, Card as CardType } from "@/types"
 
 interface ColumnProps {
   column: ColumnType

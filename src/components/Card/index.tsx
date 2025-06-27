@@ -1,16 +1,18 @@
-import React from "react"
 import { useSortable } from "@dnd-kit/sortable"
 import { CSS } from "@dnd-kit/utilities"
+import React from "react"
+
+import { Card as CardType } from "@/types"
+
 import {
+  ActionButton,
+  CardActions,
   CardContainer,
+  CardDescription,
   CardHeader,
   CardTitle,
   PriorityBadge,
-  CardDescription,
-  CardActions,
-  ActionButton,
 } from "./styled"
-import { Card as CardType } from "@/types"
 
 interface CardProps {
   card: CardType

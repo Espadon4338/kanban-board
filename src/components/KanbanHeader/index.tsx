@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-import { Header, Title, AddColumnForm, ColumnInput, AddColumnButton } from "./styled"
+
+import { AddColumnButton, AddColumnForm, ColumnInput, Header, Title } from "./styled"
 
 interface KanbanHeaderProps {
   onAddColumn: (title: string) => void

@@ -1,10 +1,11 @@
-import React from "react"
-import { closestCenter, DndContext, MouseSensor, TouchSensor, useSensors } from "@dnd-kit/core"
-import { useKanban } from "@/hooks/useKanban"
-import { KanbanHeader } from "@components/KanbanHeader"
 import { KanbanBoard } from "@components/KanbanBoard"
-import { CardModal } from "@/components/CardModal"
+import { KanbanHeader } from "@components/KanbanHeader"
+import { closestCenter, DndContext, MouseSensor, TouchSensor, useSensors } from "@dnd-kit/core"
+import React from "react"
+
 import { AppContainer } from "@/App.styled"
+import { CardModal } from "@/components/CardModal"
+import { useKanban } from "@/hooks/useKanban"
 
 const App: React.FC = () => {
   const {

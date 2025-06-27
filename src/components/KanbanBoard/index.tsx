@@ -1,8 +1,10 @@
-import React from "react"
 import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable"
+import React from "react"
+
 import { Column as ColumnComponent } from "@/components/Column"
+import { Card as CardType, Column as ColumnType } from "@/types"
+
 import { BoardContainer } from "./styled"
-import { Column as ColumnType, Card as CardType } from "@/types"
 
 interface KanbanBoardProps {
   columns: ColumnType[]

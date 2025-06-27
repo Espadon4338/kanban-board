@@ -1,19 +1,21 @@
 import React, { useState } from "react"
+
 import { Card as CardType, Priority } from "@/types"
+
 import {
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
+  ButtonGroup,
+  CancelButton,
   CloseButton,
   Form,
   FormGroup,
-  Label,
   Input,
-  TextArea,
-  Select,
-  ButtonGroup,
+  Label,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
   SaveButton,
-  CancelButton,
+  Select,
+  TextArea,
 } from "./styled"
 
 interface CardModalProps {
